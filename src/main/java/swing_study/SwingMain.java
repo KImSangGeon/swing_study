@@ -10,7 +10,11 @@ import javax.swing.border.EmptyBorder;
 import swing_study.frame.ContentPaneEx;
 import swing_study.frame.JFannelEx;
 import swing_study_component.FrameComponentEx;
+import swing_study_component.Fruit;
 import swing_study_component.JButtonEx;
+import swing_study_component.JCheckBoxCustomEx;
+import swing_study_component.JCheckbtn;
+import swing_study_component.Jradiobtn;
 import swing_study_component.jLabelEx;
 import swing_study_layout.FrameLayout;
 import swing_study_layout.LayoutGuBun;
@@ -18,6 +22,7 @@ import swing_study_layout.LayoutGuBun;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.BoxLayout;
@@ -38,8 +43,10 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JButton btn03;
 	private JPanel pComponent1;
 	private JButton btn001;
-	private JButton btn003;
 	private JButton btn002;
+	private JPanel panel;
+	private JButton btn06;
+	private JButton btn07;
 
 	/**
 	 * 
@@ -125,15 +132,32 @@ public class SwingMain extends JFrame implements ActionListener {
 		btn001.addActionListener(this);
 		pComponent1.add(btn001);
 		
-		btn002 = new JButton("JBorder");
+		btn002 = new JButton("JBorder&&JToggle");
 		btn002.addActionListener(this);
 		pComponent1.add(btn002);
 		
-		btn003 = new JButton("JToggle");
-		pComponent1.add(btn003);
+		panel = new JPanel();
+		
+		
+		contentPane.add(panel);
+		panel.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		btn06 = new JButton("JCheckbtn");
+		btn06.addActionListener(this);
+		panel.add(btn06);
+		
+		btn07 = new JButton("Jradiobtn");
+		btn07.addActionListener(this);
+		panel.add(btn07);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn07) {
+			actionPerformedBtn07(e);
+		}
+		if (e.getSource() == btn06) {
+			actionPerformedBtn06(e);
+		}
 		if (e.getSource() == btn002) {
 			actionPerformedBtn002(e);
 		}
@@ -197,5 +221,26 @@ public class SwingMain extends JFrame implements ActionListener {
 	protected void actionPerformedBtn002(ActionEvent e) {
 		JButtonEx frame = new JButtonEx();
 		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn06(ActionEvent e) {
+		JCheckbtn frame = new JCheckbtn();
+		frame.setVisible(true);
+		
+		ArrayList<Fruit> list = new ArrayList<Fruit>();
+		list.add(new Fruit("사과", 100));
+		list.add(new Fruit("배", 500));
+		list.add(new Fruit("바나나", 1000));
+		list.add(new Fruit("체리", 2000));
+		
+		JCheckBoxCustomEx frame1 = new JCheckBoxCustomEx(list);
+		
+		frame1.setVisible(true);
+		
+	}
+	protected void actionPerformedBtn07(ActionEvent e) {
+		Jradiobtn frame = new Jradiobtn();
+		frame.setVisible(true);
+		
+	
 	}
 }

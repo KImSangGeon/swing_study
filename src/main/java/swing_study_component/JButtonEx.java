@@ -95,10 +95,10 @@ public class JButtonEx extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == tglbtn) {
-			actionPerformedTdlbun(e);
+			actionPerformedTglbtn(e);
 		}
 	}
-	protected void actionPerformedTdlbun(ActionEvent e) {
+	protected void actionPerformedTglbtn(ActionEvent e) {
 		if(tglbtn.isSelected()) {
 			tglbtn.setText("눌렀네");
 			}else {
