@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import swing_study.frame.ContentPaneEx;
 import swing_study.frame.JFannelEx;
 import swing_study_component.FrameComponentEx;
+import swing_study_component.JButtonEx;
+import swing_study_component.jLabelEx;
 import swing_study_layout.FrameLayout;
 import swing_study_layout.LayoutGuBun;
 
@@ -19,6 +21,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+import javax.swing.UIManager;
+import java.awt.Color;
 
 public class SwingMain extends JFrame implements ActionListener {
 
@@ -31,8 +36,13 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JButton btnGridLayout;
 	private JButton btnAbsoluteLayout;
 	private JButton btn03;
+	private JPanel pComponent1;
+	private JButton btn001;
+	private JButton btn003;
+	private JButton btn002;
 
 	/**
+	 * 
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -105,9 +115,31 @@ public class SwingMain extends JFrame implements ActionListener {
 		btn03 = new JButton("JCoponent)공통속성)");
 		btn03.addActionListener(this);
 		contentPane.add(btn03);
+		
+		pComponent1 = new JPanel();
+		pComponent1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Jlabel & JBorder & JToggle", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		contentPane.add(pComponent1);
+		pComponent1.setLayout(new GridLayout(0, 1, 0, 10));
+		
+		btn001 = new JButton("JLabel");
+		btn001.addActionListener(this);
+		pComponent1.add(btn001);
+		
+		btn002 = new JButton("JBorder");
+		btn002.addActionListener(this);
+		pComponent1.add(btn002);
+		
+		btn003 = new JButton("JToggle");
+		pComponent1.add(btn003);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn002) {
+			actionPerformedBtn002(e);
+		}
+		if (e.getSource() == btn001) {
+			actionPerformedBtn001(e);
+		}
 		if (e.getSource() == btn03) {
 			actionPerformedBtn03(e);
 		}
@@ -156,6 +188,14 @@ public class SwingMain extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtn03(ActionEvent e) {
 		FrameComponentEx frame = new FrameComponentEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn001(ActionEvent e) {
+		jLabelEx frame = new jLabelEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn002(ActionEvent e) {
+		JButtonEx frame = new JButtonEx();
 		frame.setVisible(true);
 	}
 }
