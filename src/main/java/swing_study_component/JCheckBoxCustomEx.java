@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+@SuppressWarnings("serial")
 public class JCheckBoxCustomEx extends JFrame implements ItemListener{
 
 	private JPanel contentPane;
@@ -44,7 +45,7 @@ public class JCheckBoxCustomEx extends JFrame implements ItemListener{
 		JPanel pSouth = new JPanel();
 		contentPane.add(pSouth, BorderLayout.SOUTH);
 		
-		lblRes = new JLabel("현재 %d 0입니다.");
+		lblRes = new JLabel("현재  0입니다.");
 		pSouth.add(lblRes);
 		
 		JPanel pCenter = new JPanel();

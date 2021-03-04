@@ -17,6 +17,7 @@ import swing_study_component.JCheckbtn;
 import swing_study_component.Jradiobtn;
 import swing_study_component.jLabelEx;
 import swing_study_layout.FrameLayout;
+import swing_study_layout.JTextFieldAreaEx;
 import swing_study_layout.LayoutGuBun;
 
 import java.awt.GridLayout;
@@ -47,6 +48,8 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JPanel panel;
 	private JButton btn06;
 	private JButton btn07;
+	private JPanel text;
+	private JButton btn08;
 
 	/**
 	 * 
@@ -149,9 +152,20 @@ public class SwingMain extends JFrame implements ActionListener {
 		btn07 = new JButton("Jradiobtn");
 		btn07.addActionListener(this);
 		panel.add(btn07);
+		
+		text = new JPanel();
+		text.setBorder(new TitledBorder(null, "텍스트필드", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPane.add(text);
+		
+		btn08 = new JButton("Textfield 관련예제");
+		btn08.addActionListener(this);
+		text.add(btn08);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn08) {
+			actionPerformedBtn08(e);
+		}
 		if (e.getSource() == btn07) {
 			actionPerformedBtn07(e);
 		}
@@ -242,5 +256,9 @@ public class SwingMain extends JFrame implements ActionListener {
 		frame.setVisible(true);
 		
 	
+	}
+	protected void actionPerformedBtn08(ActionEvent e) {
+		JTextFieldAreaEx frame = new JTextFieldAreaEx();
+		frame.setVisible(true);
 	}
 }
