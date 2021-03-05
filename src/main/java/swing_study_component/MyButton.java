@@ -13,7 +13,7 @@ public class MyButton extends JButton {
 							+ File.separator;
 																						
 
-	public MyButton() {
+	public MyButton() { 
 		setIcon(new ImageIcon(imgpath + "normalIcon.gif"));
 		setRolloverIcon(new ImageIcon(imgpath + "rolloverIcon.gif"));
 		setPressedIcon(new ImageIcon(imgpath + "pressedIcon.gif"));

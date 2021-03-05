@@ -24,7 +24,9 @@ public class Jradiobtn extends JFrame implements ItemListener {
 	private String imgPath = System.getProperty("user.dir") + File.separator + "image" + File.separator;// 리눅스랑 경로 구분이
 																										// 다름
 	;
-	private ImageIcon[] icons = { new ImageIcon(imgPath + "apple.jpg"), new ImageIcon(imgPath + "pear.jpg"),
+	private ImageIcon[] icons = { 
+			new ImageIcon(imgPath + "apple.jpg"), 
+			new ImageIcon(imgPath + "pear.jpg"),
 			new ImageIcon(imgPath + "cherry.jpg"),
 
 	};

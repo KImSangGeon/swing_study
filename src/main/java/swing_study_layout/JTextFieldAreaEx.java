@@ -1,8 +1,6 @@
 package swing_study_layout;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -31,7 +29,7 @@ public class JTextFieldAreaEx extends JFrame implements ActionListener {
 	private JTextField TfName;
 	private JPasswordField PfPass1;
 	private JPasswordField PfPass2;
-	private JPanel Ta;
+	private JPanel a;
 	private JTextArea ta;
 	private JLabel lblConfirm;
 	private JDateChooser dateChooser;
@@ -45,7 +43,7 @@ public class JTextFieldAreaEx extends JFrame implements ActionListener {
 	private void initialize() {
 		setTitle("텍스트필드관련");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 502);
+		setBounds(100, 100, 450, 623);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -94,8 +92,8 @@ public class JTextFieldAreaEx extends JFrame implements ActionListener {
 		PfPass2.getDocument().addDocumentListener(listener);
 		pNorth.add(PfPass2);
 
-		Ta = new JPanel();
-		pNorth.add(Ta);
+		a = new JPanel();
+		pNorth.add(a);
 
 		lblConfirm = new JLabel("\"\"");
 		lblConfirm.setFont(new Font("굴림", Font.BOLD, 12));
@@ -131,26 +129,29 @@ public class JTextFieldAreaEx extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtnAdd(ActionEvent e) {
-		if (lblConfirm.getText().equals("일치")) {
+		if(lblConfirm.getText().equals("일치")) {
 			Date d = dateChooser.getDate();
 			String msg = String.format("%s - %tF%n", TfName.getText(), d);
 			ta.append(msg);
 			clearTf();
-		} else {
+			
+		}else {
 			PfPass2.setText("");
 			PfPass1.requestFocus();
 			PfPass1.selectAll();
+			
+		}
 		}
 
-	}
-
 	public void clearTf() {
+
 		TfName.setText("");
 		PfPass1.setText("");
 		PfPass2.setText("");
 		dateChooser.setDate(new Date());
 		lblConfirm.setText("");
 		TfName.requestFocus();
+
 	}
 
 	protected void actionPerformedBtnCancel(ActionEvent e) {
@@ -158,30 +159,30 @@ public class JTextFieldAreaEx extends JFrame implements ActionListener {
 	}
 
 	DocumentListener listener = new DocumentListener() {
-		
+
 		@Override
 		public void removeUpdate(DocumentEvent e) {
 			getMessage();
 		}
-		
+
 		@Override
 		public void insertUpdate(DocumentEvent e) {
 			getMessage();
 		}
-		
+
 		@Override
 		public void changedUpdate(DocumentEvent e) {
 			getMessage();
 		}
 
 		private void getMessage() {
-			String pw1 =new String (PfPass1.getPassword());
-			String pw2 = String.valueOf(PfPass2.getPassword());
+			String pw1 = new String(PfPass1.getPassword());
+			String pw2 = new String(PfPass2.getPassword());
 			if(pw1.equals(pw2)) {
 				lblConfirm.setText("일치");
 			}else
 				lblConfirm.setText("불일치");
+				
 		}
 	};
 }
-
