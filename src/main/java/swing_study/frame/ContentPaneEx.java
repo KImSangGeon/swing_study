@@ -27,7 +27,7 @@ public class ContentPaneEx extends JFrame implements ActionListener {
 		setBackground(Color.DARK_GRAY);
 		setForeground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 400, 450, 300);
+		setBounds(100, 400, 408, 286);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(10, 20, 30, 40));

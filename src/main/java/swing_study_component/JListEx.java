@@ -2,7 +2,9 @@ package swing_study_component;
 
 import java.io.File;
 import java.util.List;
+import java.util.Vector;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,7 +27,7 @@ public class JListEx extends JFrame implements ActionListener {
 			new ImageIcon(imgPath + "icon2.jpg"),
 			new ImageIcon(imgPath + "icon3.jpg"),
 			new ImageIcon(imgPath + "icon4.jpg")
-	};
+	};		
 	private String[] fruits = new String[] {"apple", "banana", "krwi", "mango", "pear", "peach", "berry", "strawberry", "blackberry"};
 	private JButton pBtn01;
 	private JList<String> strList;
@@ -67,11 +69,9 @@ public class JListEx extends JFrame implements ActionListener {
 		int idx = strList.getSelectedIndex();
 		String selStr = strList.getSelectedValue();
 		List<String> selectedList = strList.getSelectedValuesList();
-		String message = String.format("index : %d%n selectedValue %s%n selectedList %s%n "
-				,idx, selStr, selectedList);
-		
+		String message =  String.format("index = %d%n selectedValue %s%n selectedLIst %s%n ", idx, selStr, selectedList);
 		JOptionPane.showMessageDialog(null, message);
 		
-		
+	
 	}
 }

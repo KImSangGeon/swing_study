@@ -37,7 +37,7 @@ public class JListEx2 extends JFrame implements ActionListener {
 	}
 	private void initialize() {
 		setTitle("실시간 추가");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -73,15 +73,15 @@ public class JListEx2 extends JFrame implements ActionListener {
 		
 		nameList2 = new JList<>();
 		nameList2.setModel(getModel(stdList));
-		
 		scrollPane_1.setViewportView(nameList2);
 	}
 
 	private ListModel<String> getModel(List<String> stdList) {
 		DefaultListModel<String> model = new DefaultListModel<String>();
-		for(String e : stdList) {		
-		model.addElement(e);
+		for(String e :  stdList) {
+			model.addElement(e);
 		}return model;
+		
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == tFValue) {
@@ -90,13 +90,10 @@ public class JListEx2 extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedTFValue(ActionEvent e) {
 		String value = tFValue.getText().trim();
-//		JOptionPane.showMessageDialog(null, value);
-		
 		stdList.add(value);
 		nameList.setListData(new Vector<String>(stdList));
 		tFValue.setText("");
 		tFValue.requestFocus();
-		
 		DefaultListModel model = (DefaultListModel) nameList2.getModel();
 		model.addElement(value);
 	}
