@@ -31,9 +31,13 @@ public class JListEx3 extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private DefaultListModel<Department> model;
+	private JList<Department> deptList;
 	private JPanel pBtnS;
 	private DeptPanel pLeftCenter;
 	private JButton btnAdd;
+	private JButton btnConfirm;
+	private JButton btnUpdate;
+	private JButton btnDelete;
 
 	public JListEx3() {
 		initialize();
@@ -46,7 +50,7 @@ public class JListEx3 extends JFrame implements ActionListener {
 	private void initialize() {
 		setTitle("JList응용");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 801, 408);
+		setBounds(100, 100, 896, 543);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));		
 		setContentPane(contentPane);
@@ -65,28 +69,47 @@ public class JListEx3 extends JFrame implements ActionListener {
 
 		btnAdd = new JButton("추가");
 		btnAdd.addActionListener(this);
-		pSouth.add(btnAdd);
+		pLeftSouth.add(btnAdd);
 
 		JPanel pRight = new JPanel();
+		pRight.setBorder(new TitledBorder(null, "부서목록", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		contentPane.add(pRight);
+		
+		deptList = new JList();
+		deptList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		model = new DefaultListModel<Department>();
-		pRight.setLayout(new GridLayout(0, 1, 0, 0));
+		pRight.setLayout(new BorderLayout(0, 0));
+		deptList.setModel(model);		
+		pRight.add(deptList);
 		
-		pCmb_1 = new JPanel();
-		pRight.add(pCmb_1);
-		
-		cmbDept = new JComboBox<Department>();
-		pCmb_1.add(cmbDept);
-
 		pBtnS = new JPanel();
-		pRight.add(pBtnS);
-		pBtnS.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		pRight.add(pBtnS, BorderLayout.SOUTH);
 		
-		btnAdd = new JButton("확인");
-		pBtnS.add(btnAdd);
+		btnConfirm = new JButton("확인");
+		btnConfirm.addActionListener(this);
+		pBtnS.add(btnConfirm);
+		
+		btnUpdate = new JButton("수정");
+		btnUpdate.addActionListener(this);
+		pBtnS.add(btnUpdate);
+		
+		btnDelete = new JButton("삭제");
+		btnDelete.addActionListener(this);
+		pBtnS.add(btnDelete);
+		
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnDelete) {
+			actionPerformedBtnDelete(e);
+		}
+		if (e.getSource() == btnUpdate) {
+			actionPerformedBtnUpdate(e);
+		}
+		if (e.getSource() == btnConfirm) {
+			actionPerformedBtnConfirm(e);
+		}
 		if (e.getSource() == btnAdd) {
 			if (btnAdd.getText().equals("추가"))
 				actionPerformedBtnAdd(e);
@@ -104,7 +127,8 @@ public class JListEx3 extends JFrame implements ActionListener {
 		if(btnAdd.getText().equals("수정")) {
 			btnAdd.setText("추가");
 		}
-		JOptionPane.showMessageDialog(null, "수정 되었습니다.");
+		JOptionPane.showMessageDialog(null, "수정 되었습니다");
+	
 	}
 
 	protected void actionPerformedBtnAdd(ActionEvent e) {
@@ -115,5 +139,24 @@ public class JListEx3 extends JFrame implements ActionListener {
 		
 		JOptionPane.showMessageDialog(null, "추가 되었습니다.");
 
+	}
+	protected void actionPerformedBtnConfirm(ActionEvent e) {
+		Department dept = deptList.getSelectedValue();
+		String message = String.format("%d %s %d", dept.getDeptNo(), dept.getDeptName(), dept.getFloor());
+		JOptionPane.showMessageDialog(null, message);
+		
+	}
+	protected void actionPerformedBtnUpdate(ActionEvent e) {
+		Department dept = deptList.getSelectedValue();
+		pLeftCenter.setDepartment(dept);
+		
+		if(btnAdd.getText().equals("추가")) {
+			btnAdd.setText("수정");
+		}
+	}
+	protected void actionPerformedBtnDelete(ActionEvent e) {
+		Department dept = deptList.getSelectedValue();
+		model.removeElement(dept);
+		JOptionPane.showMessageDialog(null, "삭제 되었습니다.");
 	}
 }

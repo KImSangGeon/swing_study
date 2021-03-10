@@ -21,6 +21,7 @@ import swing_study_component_table.EmpTablePanel;
 import swing_study_component_table.MyTablePanel;
 import swing_study_component_table.Student;
 import swing_study_component_table.TitleTablePanel;
+import swing_study_component_table.EmpTablePanel2;
 
 @SuppressWarnings("serial")
 public class JTableEx extends JFrame {
@@ -31,6 +32,7 @@ public class JTableEx extends JFrame {
 	private List<Department> deptList = new ArrayList<>();
 	private List<Title> titleList = new ArrayList<>();
 	private List<Employee> empList = new ArrayList<>();
+	private List<Employee> empList2 = new ArrayList<>();
 	
 
 	public JTableEx() {
@@ -53,6 +55,12 @@ public class JTableEx extends JFrame {
 		empList.add(new Employee(1, "김상건", titleList.get(0), null, 4500000,deptList.get(0) ));
 		empList.add(new Employee(2, "이성래", titleList.get(1), new Employee(1, "김상건"), 4500000,deptList.get(1) ));
 		empList.add(new Employee(3, "이성래", titleList.get(2), new Employee(2, "김상건"), 2500000, deptList.get(2)));
+	
+		empList2.add(new Employee(1, "김상건", titleList.get(0), null, 6000000, deptList.get(0) ));
+		empList2.add(new Employee(2, "김수정", titleList.get(1), new Employee(1, "김상건"), 1000000, deptList.get(1) ));
+		
+		
+		
 		initialize();
 	}
 
@@ -115,8 +123,9 @@ public class JTableEx extends JFrame {
 		contentPane.add(pTable6);
 		pTable6.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		pTable6.add(panel, BorderLayout.CENTER);
+		EmpTablePanel2 pEmpTable2 = new EmpTablePanel2();
+		pEmpTable2.setList(empList2);
+		pTable6.add(pEmpTable2, BorderLayout.CENTER);
 	}
 
 	public DefaultTableModel getModel() {

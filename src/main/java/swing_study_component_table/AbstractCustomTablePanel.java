@@ -7,9 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowSorter;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 
 public abstract class  AbstractCustomTablePanel<T> extends JPanel {
@@ -48,8 +52,18 @@ public abstract class  AbstractCustomTablePanel<T> extends JPanel {
 	CustomTableModel model = new CustomTableModel(data, getColumnNames());
 	table.setModel(model);
 	
-	setAlignAndWidth();
+	RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+	table.setRowSorter(sorter);
 	
+	setAlignAndWidth();
+	/*
+			//컬럼내용 정렬
+			setTableCellAlign(SwingConstants.CENTER, 0, 1);
+			
+			//컬럼별 너비 조정
+			setTableCellWidth(100, 250);
+	
+	*/
 	}	
 	
 	

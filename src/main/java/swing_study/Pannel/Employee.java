@@ -16,6 +16,9 @@ public class Employee {
 	public Employee(int empNo) {
 		this.empNo = empNo;
 	}
+	
+
+
 
 	public Employee(int empNo, String empName) {
 		this.empNo = empNo;
